@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temperature Converter</title>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      input[type="text"],
+      input[type="button"] {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 200px;
+        font-size: 16px;
+      }
+      label {
+        font-size: 16px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="inputTemp" placeholder="Enter temperature" />
+      <div>
+        <label for="celsius">Celsius</label>
+        <input type="radio" name="inputScale" id="celsius" value="celsius" checked />
+      </div>
+      <div>
+        <label for="fahrenheit">Fahrenheit</label>
+        <input type="radio" name="inputScale" id="fahrenheit" value="fahrenheit" />
+      </div>
+      <div>
+        <label for="kelvin">Kelvin</label>
+        <input type="radio" name="inputScale" id="kelvin" value="kelvin" />
+      </div>
+      <div>
+        <label for="celsius">Celsius</label>
+        <input type="radio" name="outputScale" id="celsius" value="celsius" checked />
+      </div>
+      <div>
+        <label for="fahrenheit">Fahrenheit</label>
+        <input type="radio" name="outputScale" id="fahrenheit" value="fahrenheit" />
+      </div>
+      <div>
+        <label for="kelvin">Kelvin</label>
+        <input type="radio" name="outputScale" id="kelvin" value="kelvin" />
+      </div>
+      <input type="button" value="Convert" onclick="convertTemperature()" />
+      <input type="text" id="outputTemp" readonly placeholder="Converted temperature" />
+    </form>
+    <script src="temperature-converter.js"></script>
+  </body>
+  <script>
+    function convertTemperature() {
+  // Retrieve user input
+  let inputTemp = parseFloat(document.getElementById("inputTemp").value);
+  let inputScale = document.querySelector('input[name="inputScale"]:checked').value;
+  let outputScale = document.querySelector('input[name="outputScale"]:checked').value;
+
+  // Validate user input
+  if (isNaN(inputTemp)) {
+    alert("Invalid input temperature");
+    return;
+  }
+
+  // Perform temperature conversion
+  let outputTemp;
+  if (inputScale === "celsius") {
+    if (outputScale === "fahrenheit") {
+      outputTemp = (inputTemp * 9/5) + 32;
+    } else if (outputScale === "kelvin") {
+      outputTemp = inputTemp + 273.15;
+    } else {
+      outputTemp = inputTemp;
+    }
+  } else if (inputScale === "fahrenheit") {
+    if (outputScale === "celsius") {
+      outputTemp = (inputTemp - 32) * 5/9;
+    } else if (outputScale === "kelvin") {
+      outputTemp = (inputTemp + 459.67) * 5/9;
+    } else {
+      outputTemp = inputTemp;
+    }
+  } else if (inputScale === "kelvin") {
+    if (outputScale === "celsius") {
+      outputTemp = inputTemp - 273.15;
+    } else if (outputScale === "fahrenheit") {
+      outputTemp = (inputTemp * 9/5) - 459.67;
+    } else {
+      outputTemp = inputTemp;
+    }
+  }
+
+  // Display converted temperature
+  document.getElementById("outputTemp").value = outputTemp.toFixed(2);
+}
+  </script>
+</html>
