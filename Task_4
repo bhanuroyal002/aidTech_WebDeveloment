@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Location</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Welcome to Our Restaurant</h1>
+      <p>We serve delicious food for all occasions.</p>
+      <a href="#" class="button">View Menu</a>
+    </section>
+    <section class="menu">
+      <h2>Our Menu</h2>
+      <ul>
+        <li>
+          <h3>Appetizers</h3>
+          <ul>
+            <li>Bruschetta</li>
+            <li>Mozzarella Sticks</li>
+            <li>Chicken Wings</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Entrees</h3>
+          <ul>
+            <li>Spaghetti and Meatballs</li>
+            <li>Chicken Alfredo</li>
+            <li>Steak and Potatoes</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Desserts</h3>
+          <ul>
+            <li>Tiramisu</li>
+            <li>Cheesecake</li>
+            <li>Gelato</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <form>
+        <h4>Online Ordering System</h4>
+        <label for="item1">Item 1:</label>
+        <input type="number" id="item1" name="item1" min="0" value="0">
+        
+        <label for="item2">Item 2:</label>
+        <input type="number" id="item2" name="item2" min="0" value="0">
+        
+        <label for="deliveryAddress">Delivery address:</label>
+        <textarea id="deliveryAddress" name="deliveryAddress"></textarea>
+        
+        <label for="paymentMethod">Payment method:</label>
+        <select id="paymentMethod" name="paymentMethod">
+          <option value="creditCard">Credit card</option>
+          <option value="debitCard">Debit card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        
+        <button type="submit">Submit</button>
+      </form>
+      <form>
+        <h4>Table Reservation</h4>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+        
+        <label for="numGuests">Number of guests:</label>
+        <input type="number" id="numGuests" name="numGuests" min="1" max="10" required>
+        
+        <label for="contactName">Contact name:</label>
+        <input type="text" id="contactName" name="contactName" required>
+        
+        <label for="contactEmail">Contact email:</label>
+        <input type="email" id="contactEmail" name="contactEmail" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+      
+    <section class="location">
+      <h2>Our Location</h2>
+      <p>We are located at 123 Main St, Anytown, USA.</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13822.729125768962!2d-122.43138739121258!3d37.76716117953179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580c41f18d7eb%3A0xe4547f5c5f5aa5ed!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1624551880487!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+</main>
+</body>
+</html>
+
