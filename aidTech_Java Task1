@@ -1,0 +1,101 @@
+package aidInfo;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Calculator extends JFrame implements ActionListener {
+    
+    private JTextField display;
+    private double num1, num2, result;
+    private char operator;
+
+    public Calculator() {
+        super("Calculator");
+        setLayout(new BorderLayout());
+
+        // Create the display text field
+        display = new JTextField();
+        display.setEditable(false);
+        add(display, BorderLayout.NORTH);
+
+        // Create the buttons for the calculator
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
+        String[] buttonLabels = {
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", ".", "=", "+"
+        };
+        for (int i = 0; i < buttonLabels.length; i++) {
+            JButton button = new JButton(buttonLabels[i]);
+            button.addActionListener(this);
+            buttonPanel.add(button);
+        }
+        add(buttonPanel, BorderLayout.CENTER);
+
+        // Create the clear button
+        JButton clearButton = new JButton("Clear");
+        clearButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                num1 = 0;
+                num2 = 0;
+                result = 0;
+                operator = ' ';
+                display.setText("");
+            }
+        });
+        add(clearButton, BorderLayout.SOUTH);
+
+        setSize(300, 300);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String buttonText = ((JButton) e.getSource()).getText();
+
+        if (buttonText.equals("+")) {
+            num1 = Double.parseDouble(display.getText());
+            operator = '+';
+            display.setText("");
+        } else if (buttonText.equals("-")) {
+            num1 = Double.parseDouble(display.getText());
+            operator = '-';
+            display.setText("");
+        } else if (buttonText.equals("*")) {
+            num1 = Double.parseDouble(display.getText());
+            operator = '*';
+            display.setText("");
+        } else if (buttonText.equals("/")) {
+            num1 = Double.parseDouble(display.getText());
+            operator = '/';
+            display.setText("");
+        } else if (buttonText.equals("=")) {
+            num2 = Double.parseDouble(display.getText());
+            if (operator == '+') {
+                result = num1 + num2;
+            } else if (operator == '-') {
+                result = num1 - num2;
+            } else if (operator == '*') {
+                result = num1 * num2;
+            } else if (operator == '/') {
+                if (num2 == 0) {
+                    JOptionPane.showMessageDialog(this, "Cannot divide by zero");
+                    display.setText("");
+                    return;
+                } else {
+                    result = num1 / num2;
+                }
+            }
+            display.setText(Double.toString(result));
+        } else {
+            display.setText(display.getText() + buttonText);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Calculator();
+    }
+
+}
